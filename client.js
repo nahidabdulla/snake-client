@@ -10,9 +10,16 @@ const connect = function () {
   });
 
   conn.on("data", (data) => {
-    console.log(data)
-  })
+    console.log(data);
+  });
 
+  conn.on("connect", (connect) => {
+
+    console.log("Successfully connected to game server");
+
+    conn.write("Name: NA");
+    
+  });
   
   conn.setEncoding("utf8");
 
