@@ -29,10 +29,21 @@ const setupInput = (conn) => {
     }
   };
 
+  const sendMessage = (key) => {
+    if (key === 'h') {
+      conn.write("Say: Hey there");
+    } else if (key === 'i') {
+      conn.write("Say: I'm going to win!");
+    } else if (key === 'g') {
+      conn.write("Say: Nice save");
+    }
+  };
+
+
 
   stdin.on("data", wasd);
   stdin.on("data", handleUserInput);
-
+  stdin.on("data", sendMessage);
 
   return stdin;
 
