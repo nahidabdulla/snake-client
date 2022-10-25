@@ -16,11 +16,14 @@ const setupInput = (conn) => {
 
   stdin.resume();
 
+
+//function to quit game
   const handleUserInput = (key) => {
     if (key === '\u0003') process.exit();
   };
 
 
+//function for move commands
   const wasd = (key) => {
     if (key === 'w') {
       conn.write(MOVE_UP_KEY);
@@ -33,7 +36,8 @@ const setupInput = (conn) => {
     }
   };
 
-
+  
+//function for message commands
   const sendMessage = (findValue) => {
     for (let [key, value] of Object.entries(MESSAGE)) {
       if (findValue === key) {
