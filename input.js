@@ -1,3 +1,5 @@
+const { MOVE_UP_KEY, MOVE_LEFT_KEY, MOVE_DOWN_KEY, MOVE_RIGHT_KEY, MESSAGE } = require("./constants");
+
 let connection;
 
 const setupInput = (conn) => {
@@ -19,23 +21,22 @@ const setupInput = (conn) => {
 
   const wasd = (key) => {
     if (key === 'w') {
-      conn.write("Move: up");
+      conn.write(MOVE_UP_KEY);
     } else if (key === 'a') {
-      conn.write("Move: left");
+      conn.write(MOVE_LEFT_KEY);
     } else if (key === 's') {
-      conn.write("Move: down");
+      conn.write(MOVE_DOWN_KEY);
     } else if (key === 'd') {
-      conn.write("Move: right");
+      conn.write(MOVE_RIGHT_KEY);
     }
   };
 
-  const sendMessage = (key) => {
-    if (key === 'h') {
-      conn.write("Say: Hey there");
-    } else if (key === 'i') {
-      conn.write("Say: I'm going to win!");
-    } else if (key === 'g') {
-      conn.write("Say: Nice save");
+  
+  const sendMessage = (findValue) => {
+    for (let [key, value] of Object.entries(MESSAGE)) {
+      if (findValue === key) {
+        conn.write(value);
+      }
     }
   };
 
