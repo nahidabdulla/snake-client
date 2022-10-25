@@ -1,6 +1,8 @@
+let connection;
+
 const { MOVE_UP_KEY, MOVE_LEFT_KEY, MOVE_DOWN_KEY, MOVE_RIGHT_KEY, MESSAGE } = require("./constants");
 
-let connection;
+
 
 const setupInput = (conn) => {
 
@@ -15,7 +17,7 @@ const setupInput = (conn) => {
   stdin.resume();
 
   const handleUserInput = (key) => {
-    if (key === '\u0003') process.exit();  
+    if (key === '\u0003') process.exit();
   };
 
 
@@ -31,7 +33,7 @@ const setupInput = (conn) => {
     }
   };
 
-  
+
   const sendMessage = (findValue) => {
     for (let [key, value] of Object.entries(MESSAGE)) {
       if (findValue === key) {
